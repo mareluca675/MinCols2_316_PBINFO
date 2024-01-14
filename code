@@ -1,0 +1,64 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    int m, n, i, j, mat[101][101], mini = 1000000;
+    bool ok;
+    
+    cin >> n >> m;
+    
+    for(i = 1; i <= n; i ++)
+    {
+        for(j = 1; j <= m; j ++)
+        {
+            cin >> mat[i][j];
+        }
+    }
+    
+    for(j = 1; j <= m; j ++)
+    {
+        for(i = 1; i <= n; i ++)
+        {
+            if(mat[i][j] < mini)
+            {
+                mini = mat[i][j];
+            }
+        }
+    }
+    
+    for(j = 1; j <= m; j ++)
+    {
+        ok = false;
+        
+        for(i = 1; i <= n; i ++)
+        {
+            if(mat[i][j] == mini)
+            {
+                ok = true;
+                break;
+            }
+        }
+        
+        if(ok == true)
+        {
+            for(i = 1; i <= n; i ++)
+            {
+                mat[i][j] = mini;
+            }
+        }
+    }
+    
+    for(i = 1; i <= n; i ++)
+    {
+        for(j = 1; j <= m; j ++)
+        {
+            cout << mat[i][j] << " ";
+        }
+        
+        cout << '\n';
+    }
+
+    return 0;
+}
